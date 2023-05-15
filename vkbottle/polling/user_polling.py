@@ -65,7 +65,7 @@ class UserPolling(ABCPolling):
                 if not server:
                     server = await self.get_server()
                 event = await self.get_event(server)
-                if not event.get("ts"):
+                if not "ts" in event:
                     server = await self.get_server()
                     continue
                 server["ts"] = event["ts"]
